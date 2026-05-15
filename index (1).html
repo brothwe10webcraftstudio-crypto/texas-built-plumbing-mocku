@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Texas Built Plumbing | Fort Worth, TX</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #C0201A;
+    --red-dark: #8B1512;
+    --sand: #F2EDE4;
+    --dark: #1A1209;
+    --brown: #3D2B1A;
+    --white: #FFFFFF;
+    --gray: #6B7280;
+    --light: #FAF8F5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Lato', sans-serif; background: var(--white); color: var(--dark); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    background: var(--dark);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 68px;
+    position: sticky; top: 0; z-index: 100;
+    border-bottom: 2px solid var(--red);
+  }
+  .logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px; font-weight: 800;
+    color: var(--white); letter-spacing: 3px; text-transform: uppercase;
+  }
+  .logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a { color: #9CA3AF; text-decoration: none; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--red); }
+  .nav-cta { background: var(--red); color: var(--white); padding: 10px 22px; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--red-dark); }
+
+  /* HERO */
+  .hero {
+    background: var(--dark);
+    min-height: 88vh;
+    display: flex; align-items: center;
+    padding: 80px 5%;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(120px, 18vw, 220px);
+    font-weight: 800; letter-spacing: 4px;
+    color: rgba(255,255,255,0.03);
+    text-transform: uppercase;
+    pointer-events: none; white-space: nowrap;
+    line-height: 1;
+  }
+  .hero-line {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 4px; background: var(--red);
+  }
+  .hero-content { max-width: 660px; position: relative; z-index: 2; padding-left: 32px; }
+  .hero-tag {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 3px;
+    color: var(--red); text-transform: uppercase;
+    margin-bottom: 20px; display: block;
+    animation: fadeIn 0.5s ease both;
+  }
+  .hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(56px, 9vw, 100px);
+    color: var(--white);
+    line-height: 0.92; font-weight: 800;
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeIn 0.5s 0.1s ease both;
+  }
+  .hero h1 em { color: var(--red); font-style: normal; }
+  .hero p {
+    color: #9CA3AF; font-size: 17px; line-height: 1.7;
+    max-width: 480px; margin-bottom: 40px;
+    animation: fadeIn 0.5s 0.2s ease both;
+    font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; animation: fadeIn 0.5s 0.3s ease both; }
+  .btn-red { background: var(--red); color: var(--white); padding: 15px 32px; border-radius: 4px; font-weight: 700; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-red:hover { background: var(--red-dark); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.2); padding: 15px 32px; border-radius: 4px; font-weight: 700; font-size: 14px; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; transition: border-color 0.2s; display: inline-block; }
+  .btn-ghost:hover { border-color: var(--red); color: var(--red); }
+  .hero-badges { display: flex; gap: 32px; margin-top: 56px; animation: fadeIn 0.5s 0.4s ease both; }
+  .badge-item { text-align: center; }
+  .badge-num { font-family: 'Barlow Condensed', sans-serif; font-size: 40px; font-weight: 800; color: var(--red); line-height: 1; }
+  .badge-label { font-size: 11px; color: #6B7280; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; font-weight: 700; }
+
+  /* RED STRIP */
+  .strip { background: var(--red); padding: 18px 5%; display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+  .strip-item { color: var(--white); font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+
+  /* SERVICES */
+  .services { padding: 100px 5%; background: var(--light); }
+  .section-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+  .section-h { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(38px, 5vw, 58px); font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--dark); margin-bottom: 14px; line-height: 1.05; }
+  .section-p { color: var(--gray); font-size: 15px; line-height: 1.7; max-width: 500px; margin-bottom: 56px; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2px; }
+  .svc {
+    background: var(--white);
+    padding: 40px 32px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.2s, transform 0.2s;
+    cursor: default;
+  }
+  .svc:hover { border-color: var(--red); transform: translateY(-4px); }
+  .svc-num { font-family: 'Barlow Condensed', sans-serif; font-size: 48px; font-weight: 800; color: #F0EBE3; line-height: 1; margin-bottom: 16px; }
+  .svc h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .svc p { color: var(--gray); font-size: 14px; line-height: 1.7; margin-bottom: 18px; }
+  .svc-list { list-style: none; }
+  .svc-list li { font-size: 13px; color: #4B5563; padding: 4px 0; padding-left: 16px; position: relative; }
+  .svc-list li::before { content: '—'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+
+  /* PROCESS */
+  .process { padding: 100px 5%; background: var(--dark); }
+  .process .section-h { color: var(--white); }
+  .process .section-p { color: #6B7280; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; margin-top: 56px; }
+  .step { padding: 36px 28px; border-left: 1px solid rgba(255,255,255,0.06); position: relative; }
+  .step:first-child { border-left: none; }
+  .step-n { font-family: 'Barlow Condensed', sans-serif; font-size: 56px; font-weight: 800; color: var(--red); opacity: 0.3; line-height: 1; margin-bottom: 14px; }
+  .step h4 { color: var(--white); font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .step p { color: #6B7280; font-size: 13px; line-height: 1.7; }
+
+  /* AREAS */
+  .areas { background: var(--sand); padding: 80px 5%; }
+  .areas-inner { display: flex; gap: 60px; flex-wrap: wrap; align-items: start; }
+  .area-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .area-tag { background: var(--white); border: 1.5px solid #D6CFC4; padding: 8px 18px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px; color: var(--brown); text-transform: uppercase; transition: all 0.2s; border-radius: 3px; }
+  .area-tag:hover { background: var(--red); color: var(--white); border-color: var(--red); }
+
+  /* REVIEWS */
+  .reviews { padding: 90px 5%; background: var(--white); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 52px; }
+  .review { background: var(--light); padding: 28px; border-left: 4px solid var(--red); border-radius: 0 8px 8px 0; }
+  .rev-stars { color: var(--red); font-size: 15px; letter-spacing: 2px; margin-bottom: 14px; }
+  .rev-text { color: #374151; font-size: 14px; line-height: 1.8; font-style: italic; margin-bottom: 16px; }
+  .rev-name { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+  .rev-loc { color: var(--gray); font-size: 12px; }
+
+  /* CTA */
+  .cta { background: var(--red); padding: 80px 5%; text-align: center; }
+  .cta h2 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(44px, 7vw, 76px); font-weight: 800; color: var(--white); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; line-height: 1; }
+  .cta p { color: rgba(255,255,255,0.8); font-size: 16px; margin-bottom: 36px; }
+  .btn-wht { background: var(--white); color: var(--red); padding: 16px 40px; border-radius: 4px; font-weight: 700; font-size: 15px; letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none; display: inline-block; transition: transform 0.2s; }
+  .btn-wht:hover { transform: translateY(-3px); }
+
+  /* FOOTER */
+  footer { background: #0E0A04; padding: 52px 5% 28px; border-top: 2px solid var(--red); }
+  .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 40px; margin-bottom: 40px; }
+  .f-logo { font-family: 'Barlow Condensed', sans-serif; font-size: 26px; font-weight: 800; color: var(--white); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+  .f-logo span { color: var(--red); }
+  footer p, footer a { color: #4B5563; font-size: 13px; line-height: 1.9; text-decoration: none; display: block; }
+  footer a:hover { color: var(--red); }
+  .f-head { color: #9CA3AF; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+  .footer-base { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 22px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .footer-base p { color: #374151; font-size: 12px; }
+
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @media(max-width:640px) { .nav-links { display: none; } .hero-badges { gap: 20px; flex-wrap: wrap; } .strip { gap: 18px; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Texas <span>Built</span> Plumbing</div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#areas">Areas</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <a href="tel:8175891567" class="nav-cta">Call Now</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-line"></div>
+  <div class="hero-bg-text">PLUMBING</div>
+  <div class="hero-content">
+    <span class="hero-tag">Fort Worth, TX · Family-Owned</span>
+    <h1>Built Tough.<br><em>Fixed Right.</em><br>First Time.</h1>
+    <p>Full-service residential and commercial plumbing for the Metroplex. Sewer specialists, water heaters, leak repair, and 24/7 emergency service — all from a team that treats your home like our own.</p>
+    <div class="hero-btns">
+      <a href="tel:8175891567" class="btn-red">Call (817) 589-1567</a>
+      <a href="#services" class="btn-ghost">See All Services</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge-item">
+        <div class="badge-num">24/7</div>
+        <div class="badge-label">Emergency Service</div>
+      </div>
+      <div class="badge-item">
+        <div class="badge-num">Free</div>
+        <div class="badge-label">Estimates</div>
+      </div>
+      <div class="badge-item">
+        <div class="badge-num">100%</div>
+        <div class="badge-label">Licensed & Insured</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-item">✔ Sewer Line Specialists</div>
+  <div class="strip-item">✔ Free Estimates</div>
+  <div class="strip-item">✔ 24/7 Emergency Response</div>
+  <div class="strip-item">✔ Commercial & Residential</div>
+</div>
+
+<section class="services" id="services">
+  <div class="section-eyebrow">What We Fix</div>
+  <div class="section-h">Full-Service<br>Metroplex Plumbing</div>
+  <div class="section-p">No job too big or too small. From a leaky faucet to a full commercial remodel — Texas Built handles it all with licensed techs and upfront pricing.</div>
+
+  <div class="services-grid">
+    <div class="svc">
+      <div class="svc-num">01</div>
+      <h3>Sewer & Drain</h3>
+      <p>Our speciality. From blocked drains to full sewer line replacement — the Metroplex's trusted sewer experts.</p>
+      <ul class="svc-list">
+        <li>Sewer line repair & replacement</li>
+        <li>Hydro jetting</li>
+        <li>Camera pipe inspection (DVD)</li>
+        <li>Drain cleaning & clearing</li>
+        <li>Backflow prevention</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-num">02</div>
+      <h3>Leak Detection</h3>
+      <p>Fast, accurate leak detection to protect your home and keep your water bills in check.</p>
+      <ul class="svc-list">
+        <li>Bathroom & laundry leaks</li>
+        <li>Hot water line leaks</li>
+        <li>Outside faucet repair</li>
+        <li>Slab leak detection</li>
+        <li>Gas leak detection</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-num">03</div>
+      <h3>Water Heaters</h3>
+      <p>All makes and models. Fast installation, repair, and replacement with same-day availability.</p>
+      <ul class="svc-list">
+        <li>Water heater replacement</li>
+        <li>Tankless installation</li>
+        <li>Repair & maintenance</li>
+        <li>All brands serviced</li>
+        <li>Commercial water heaters</li>
+      </ul>
+    </div>
+    <div class="svc">
+      <div class="svc-num">04</div>
+      <h3>Commercial Work</h3>
+      <p>Full commercial plumbing including tenant build-outs, remodels, and ongoing maintenance contracts.</p>
+      <ul class="svc-list">
+        <li>Tenant build-outs</li>
+        <li>Commercial repiping</li>
+        <li>HVAC & gas line work</li>
+        <li>Code compliance</li>
+        <li>Property management service</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="section-eyebrow">How It Works</div>
+  <div class="section-h">Simple.<br>Transparent.<br>Done Right.</div>
+  <div class="section-p">We keep it straight — no surprise charges, no unnecessary upsells. Just reliable plumbing work from people you can trust.</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-n">01</div>
+      <h4>Call Us</h4>
+      <p>Live in-house professionals answer your call 24/7. Tell us what's going on — no hold music, no call centres.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">02</div>
+      <h4>Free Estimate</h4>
+      <p>We come out and assess the problem. You get a clear, upfront price before any work begins — no surprises.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">03</div>
+      <h4>We Fix It</h4>
+      <p>Our licensed plumbers get the job done correctly the first time, using quality parts and proven techniques.</p>
+    </div>
+    <div class="step">
+      <div class="step-n">04</div>
+      <h4>You're Done</h4>
+      <p>Back to normal life. We clean up, you get a full walkthrough of the work, and a number to call if anything comes up.</p>
+    </div>
+  </div>
+</section>
+
+<section class="areas" id="areas">
+  <div class="areas-inner">
+    <div style="flex:1;min-width:260px">
+      <div class="section-eyebrow">Where We Work</div>
+      <div class="section-h">The Full<br>Metroplex</div>
+      <p style="color:var(--gray);font-size:15px;line-height:1.7;margin-top:14px">Based in Fort Worth, we service residential and commercial customers across the entire Dallas-Fort Worth Metroplex. Not sure if we cover your area? Just call — we almost certainly do.</p>
+      <a href="tel:8175891567" class="btn-red" style="margin-top:28px;display:inline-block">Call to Confirm Your Area</a>
+    </div>
+    <div style="flex:2;min-width:260px">
+      <div class="area-tags">
+        <span class="area-tag">Fort Worth</span>
+        <span class="area-tag">Dallas</span>
+        <span class="area-tag">Arlington</span>
+        <span class="area-tag">Mansfield</span>
+        <span class="area-tag">Burleson</span>
+        <span class="area-tag">Haltom City</span>
+        <span class="area-tag">North Richland Hills</span>
+        <span class="area-tag">Keller</span>
+        <span class="area-tag">Grapevine</span>
+        <span class="area-tag">Euless</span>
+        <span class="area-tag">Bedford</span>
+        <span class="area-tag">Colleyville</span>
+        <span class="area-tag">Southlake</span>
+        <span class="area-tag">Watauga</span>
+        <span class="area-tag">+ DFW Metroplex</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="section-eyebrow">Customer Reviews</div>
+  <div class="section-h">What Fort Worth<br>Says About Us</div>
+  <div class="reviews-grid">
+    <div class="review">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Called Texas Built for a sewer line issue that had been backing up for months. They found the problem fast with a camera inspection and had it fixed the same day. Professional and fairly priced."</p>
+      <div class="rev-name">Robert H.</div>
+      <div class="rev-loc">Fort Worth, TX</div>
+    </div>
+    <div class="review">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Won't charge an arm and a leg. They came out same day, explained exactly what was wrong, fixed a dishwasher leak and a clogged drain. Great prices, great service — highly recommend."</p>
+      <div class="rev-name">Maria G.</div>
+      <div class="rev-loc">Arlington, TX</div>
+    </div>
+    <div class="review">
+      <div class="rev-stars">★★★★★</div>
+      <p class="rev-text">"Very professional team. They answered questions, showed me the camera footage of my pipes, and were completely transparent about pricing. Texas Built is my go-to from now on."</p>
+      <div class="rev-name">Calvin D.</div>
+      <div class="rev-loc">Mansfield, TX</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Need a Plumber<br>Right Now?</h2>
+  <p>We answer 24/7. Free estimates. No surprise charges.</p>
+  <a href="tel:8175891567" class="btn-wht">(817) 589-1567 — Call Now</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="f-logo">Texas <span>Built</span> Plumbing</div>
+      <p>Full-service residential & commercial plumbing for Fort Worth and the entire DFW Metroplex. Licensed, bonded & insured.</p>
+    </div>
+    <div>
+      <div class="f-head">Services</div>
+      <a href="#services">Sewer & Drain</a>
+      <a href="#services">Leak Detection</a>
+      <a href="#services">Water Heaters</a>
+      <a href="#services">Commercial Work</a>
+    </div>
+    <div>
+      <div class="f-head">Service Areas</div>
+      <a href="#areas">Fort Worth</a>
+      <a href="#areas">Dallas</a>
+      <a href="#areas">Arlington</a>
+      <a href="#areas">DFW Metroplex</a>
+    </div>
+    <div>
+      <div class="f-head">Contact</div>
+      <a href="tel:8175891567">(817) 589-1567</a>
+      <p>24/7 emergency line</p>
+      <p style="margin-top:12px">Free estimates available</p>
+    </div>
+  </div>
+  <div class="footer-base">
+    <p>© 2025 Texas Built Plumbing LLC · Fort Worth, TX</p>
+    <p>Licensed · Bonded · Insured · Family-Owned</p>
+  </div>
+</footer>
+
+</body>
+</html>
